@@ -92,7 +92,7 @@ const InfiniteQueriesPage = () => {
                             {page.results.map(pokemon => {
                                 return (
                                     <Card key={pokemon.name}>
-                                        <CardContent className='grid place-items-center h-[8rem]'>
+                                        <CardContent className='grid place-items-center place-content-center h-[8rem] p-0'>
                                             <img src={pokemon.sprites.front_default} alt='' />
                                             <h1>{pokemon.name}</h1>
                                         </CardContent>

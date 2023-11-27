@@ -1,6 +1,6 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Fragment } from 'react';
-import { CodeBlock, dracula } from 'react-code-blocks';
+import CodeBlock from './CodeBlock';
 import CodeLabel from './CodeLabel';
 
 const codeExample = `const fetchData = async ({ queryKey, pageParam = 0 }) => {
@@ -151,14 +151,7 @@ const InfiniteInformation = () => {
                     <CodeLabel>“infinite“</CodeLabel> stream of data. This approach is particularly useful for scenarios
                     where the entire dataset is large, and loading all the data at once would be impractical or slow.
                 </span>,
-                <div
-                    key={1}
-                    style={{
-                        fontFamily: 'Fira Code',
-                    }}
-                >
-                    <CodeBlock text={exampleInfiniteQuery} language='javascript' theme={dracula} />
-                </div>,
+                <CodeBlock key={1} code={exampleInfiniteQuery} />,
                 <span key={2}>
                     <CodeLabel>useInfiniteQuery</CodeLabel> is similar to <CodeLabel>useQuery</CodeLabel> in that both
                     take a query key and query function, and both return <CodeLabel>data</CodeLabel>,{' '}
@@ -172,14 +165,7 @@ const InfiniteInformation = () => {
                     example, if we are using the <CodeLabel>pageParam</CodeLabel> value to make a request to an API, we
                     can use it to set the offset or page number.
                 </span>,
-                <div
-                    key={4}
-                    style={{
-                        fontFamily: 'Fira Code',
-                    }}
-                >
-                    <CodeBlock text={codeExample} language='javascript' theme={dracula} />
-                </div>,
+                <CodeBlock key={4} code={codeExample} />,
             ],
         },
         {
@@ -204,30 +190,15 @@ const InfiniteInformation = () => {
                     Lastly, the <CodeLabel>isFetching</CodeLabel> property can be used to determine if a fetch operation
                     is currently in progress.
                 </span>,
-                <div
+                <CodeBlock
                     key={4}
-                    style={{
-                        fontFamily: 'Fira Code',
-                    }}
-                >
-                    <CodeBlock
-                        text={`const { data, isLoading, fetchNextPage, hasNextPage, isFetching } = useInfiniteQuery('myQueryKey', fetchDataFunction);`}
-                        language='javascript'
-                        theme={dracula}
-                    />
-                </div>,
+                    code={`const { data, isLoading, fetchNextPage, hasNextPage, isFetching } = useInfiniteQuery('myQueryKey', fetchDataFunction);`}
+                />,
                 <span key={5}>
                     The data returned by the <CodeLabel>useInfiniteQuery</CodeLabel> hook is an object with a pages
                     property that contains an array of pages. Each page contains an array of results.
                 </span>,
-                <div
-                    key={6}
-                    style={{
-                        fontFamily: 'Fira Code',
-                    }}
-                >
-                    <CodeBlock text={exampleCode2} language='javascript' theme={dracula} />
-                </div>,
+                <CodeBlock key={6} code={exampleCode2} />,
             ],
         },
         {
@@ -244,14 +215,7 @@ const InfiniteInformation = () => {
                     determine the parameter for the next page automatically. This parameter is used in subsequent calls
                     to <CodeLabel>fetchPageFunction</CodeLabel> to fetch the next page of data.
                 </span>,
-                <div
-                    key={2}
-                    style={{
-                        fontFamily: 'Fira Code',
-                    }}
-                >
-                    <CodeBlock text={exampleCode3} language='javascript' theme={dracula} />
-                </div>,
+                <CodeBlock key={2} code={exampleCode3} />,
                 <span key={3}>
                     <CodeLabel>getNextPageParam</CodeLabel> is a callback function that you provide to{' '}
                     <CodeLabel>useInfiniteQuery</CodeLabel>. It takes the last page`s data as a parameter and returns
@@ -282,14 +246,7 @@ const InfiniteInformation = () => {
                     Below is an example of how I used <CodeLabel>getNextPageParam</CodeLabel> to extract the{' '}
                     <CodeLabel>offset</CodeLabel> from the next page URL.
                 </span>,
-                <div
-                    key={9}
-                    style={{
-                        fontFamily: 'Fira Code',
-                    }}
-                >
-                    <CodeBlock text={exampleCode4} language='javascript' theme={dracula} />
-                </div>,
+                <CodeBlock key={9} code={exampleCode4} />,
                 <span key={10}>
                     Why I did this is because the API response structure did not align with React Query`s expectations
                     for automatic pagination. The API response structure is shown below.
@@ -303,26 +260,12 @@ const InfiniteInformation = () => {
                     The data returned by the <CodeLabel>useQuery</CodeLabel> hook is an object with a pages property
                     that contains an array of pages. Each page contains an array of results.
                 </span>,
-                <div
-                    key={1}
-                    style={{
-                        fontFamily: 'Fira Code',
-                    }}
-                >
-                    <CodeBlock text={JSON.stringify(exampleData, null, 2)} language='javascript' theme={dracula} />
-                </div>,
+                <CodeBlock key={1} code={JSON.stringify(exampleData, null, 2)} />,
                 <span key={2}>
                     The data returned by the <CodeLabel>useInfiniteQuery</CodeLabel> hook is an object with a pages
                     property that contains an array of pages. Each page contains an array of results.
                 </span>,
-                <div
-                    key={3}
-                    style={{
-                        fontFamily: 'Fira Code',
-                    }}
-                >
-                    <CodeBlock text={JSON.stringify(exampleData2, null, 2)} language='javascript' theme={dracula} />
-                </div>,
+                <CodeBlock key={3} code={JSON.stringify(exampleData2, null, 2)} />,
             ],
         },
         {
@@ -367,9 +310,9 @@ const InfiniteInformation = () => {
         <Accordion type='single' collapsible className='w-full text-left mt-5'>
             {information.map((info, index) => (
                 <AccordionItem key={index} value={`item-${index}`}>
-                    <AccordionTrigger className='text-lg font-semibold'>{info.title}</AccordionTrigger>
+                    <AccordionTrigger className='md:text-lg font-semibold text-left'>{info.title}</AccordionTrigger>
                     {info.content.map((content, index) => (
-                        <AccordionContent key={index} className='text-base'>
+                        <AccordionContent key={index} className='md:text-base'>
                             {content}
                         </AccordionContent>
                     ))}

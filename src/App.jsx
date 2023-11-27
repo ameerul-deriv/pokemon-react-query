@@ -5,10 +5,10 @@ import CodeLabel from '@/components/CodeLabel';
 
 function App() {
     return (
-        <Fragment>
+        <div className='h-full w-full'>
             <Navbar />
-            <div className='h-[50vh] w-full flex flex-col align-center justify-center mt-8 p-4 text-left'>
-                <h2 className='text-4xl font-bold mb-4'>Paginated Queries vs Infinite Queries</h2>
+            <div className='h-full w-full flex flex-col align-center justify-center mt-10 mb-10 text-left overflow-hidden'>
+                <h2 className='text-4xl font-bold mb-4'>Paginated Queries vs Infinite Quersies</h2>
                 <p className='text-gray-700 mb-4 text-lg'>
                     Explore the power of paginated and infinite queries with React Query to optimize data fetching in
                     your applications.
@@ -27,7 +27,7 @@ function App() {
                     efficient data fetching.
                 </p>
             </div>
-        </Fragment>
+        </div>
     );
 }
 

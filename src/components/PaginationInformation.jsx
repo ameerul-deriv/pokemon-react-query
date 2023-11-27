@@ -1,6 +1,6 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { CodeBlock, dracula } from 'react-code-blocks';
 import CodeLabel from './CodeLabel';
+import CodeBlock from './CodeBlock';
 
 const codeExample = `const [page, setPage] = React.useState(0);
 const { data } = useQuery(['myQueryKey', { page: 1, pageSize: 10 }], fetchDataFunction);
@@ -65,27 +65,13 @@ const PaginationInformation = () => {
                     When the component mounts or when triggered, the <CodeLabel>useQuery</CodeLabel> hook is used to
                     fetch the initial set of data from the API.
                 </span>,
-                <div
-                    key={1}
-                    style={{
-                        fontFamily: 'Fira Code',
-                    }}
-                >
-                    <CodeBlock text={initialQuery} language='javascript' theme={dracula} />
-                </div>,
+                <CodeBlock key={1} code={initialQuery} />,
                 <span key={2}>
                     To implement pagination, React Query allows you to pass additional parameters to the{' '}
                     <CodeLabel>useQuery</CodeLabel> hook, such as <CodeLabel>page</CodeLabel> or{' '}
                     <CodeLabel>pageSize</CodeLabel>. These parameters can be part of the query key or passed as options.
                 </span>,
-                <div
-                    key={3}
-                    style={{
-                        fontFamily: 'Fira Code',
-                    }}
-                >
-                    <CodeBlock text={paginatedQuery} language='javascript' theme={dracula} />
-                </div>,
+                <CodeBlock key={3} code={paginatedQuery} />,
             ],
         },
         {
@@ -103,14 +89,7 @@ const PaginationInformation = () => {
                     To get the next page, a button is used to increment or decrement the pages state to fetch the next
                     or previous page of data by using the <CodeLabel>setPage</CodeLabel> function.
                 </span>,
-                <div
-                    key={3}
-                    style={{
-                        fontFamily: 'Fira Code',
-                    }}
-                >
-                    <CodeBlock text={codeExample} language='javascript' theme={dracula} />
-                </div>,
+                <CodeBlock key={3} code={codeExample} />,
             ],
         },
         {
@@ -124,14 +103,7 @@ const PaginationInformation = () => {
                     To prevent this, the <CodeLabel>keepPreviousData</CodeLabel> option is used to tell React Query to
                     keep the previous data when the query key changes.
                 </span>,
-                <div
-                    key={2}
-                    style={{
-                        fontFamily: 'Fira Code',
-                    }}
-                >
-                    <CodeBlock text={keepPreviousData} language='javascript' theme={dracula} />
-                </div>,
+                <CodeBlock key={2} code={keepPreviousData} />,
                 <span key={3}>
                     By passing <CodeLabel>keepPreviousData: true</CodeLabel> as a configuration option on the query,
                     whenever the query key changes, the query will continue providing the last query`s data until the
@@ -146,7 +118,7 @@ const PaginationInformation = () => {
         <Accordion type='single' collapsible className='w-full text-left mt-5'>
             {information.map((info, index) => (
                 <AccordionItem key={index} value={`item-${index}`}>
-                    <AccordionTrigger className='text-lg font-semibold'>{info.title}</AccordionTrigger>
+                    <AccordionTrigger className='text-lg font-semibold text-left'>{info.title}</AccordionTrigger>
                     {info.content.map((content, index) => (
                         <AccordionContent key={index} className='text-base'>
                             {content}

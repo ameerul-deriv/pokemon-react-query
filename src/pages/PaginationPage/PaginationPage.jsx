@@ -62,7 +62,7 @@ const PaginationComponent = () => {
                     {data &&
                         data.results.map(pokemon => (
                             <Card key={pokemon.name}>
-                                <CardContent className='grid place-items-center h-[8rem]'>
+                                <CardContent className='grid place-items-center place-content-center h-[8rem] p-0'>
                                     <img src={pokemon.sprites.front_default} alt={pokemon.name} />
                                     <h2>{pokemon.name}</h2>
                                 </CardContent>
