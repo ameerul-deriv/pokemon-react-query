@@ -85,6 +85,7 @@ const InfiniteQueriesPage = () => {
                             <b>Yay! You have seen it all</b>
                         </p>
                     }
+                    style={{ overflow: 'hidden' }}
                 >
                     {data.pages.map((page, index) => (
                         <Fragment key={index}>
