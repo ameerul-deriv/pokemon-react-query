@@ -3,9 +3,9 @@ import { Fragment } from 'react';
 import CodeBlock from './CodeBlock';
 import CodeLabel from './CodeLabel';
 
-const codeExample = `const fetchData = async ({ queryKey, pageParam = 0 }) => {
+const codeExample = `const fetchDataFunction = async ({ queryKey, pageParam = 0 }) => {
     const [myQueryKey] = queryKey;
-    const url = 'https://pokeapi.co/api/v2/pokemon?limit=15&offset=pageParam';
+    const url = 'https://pokeapi.co/api/v2/pokemon?limit=15&offset=💲{pageParam}';
     const res = await fetch(url);
     return res.json();
 };`;
@@ -34,15 +34,13 @@ return (
             {isFetching ? 'Loading...' : hasNextPage ? 'Load More' : 'Nothing more to load'}
         </button>
     </div>
-);
-`;
+);`;
 
 const exampleCode3 = `const { data, isLoading, fetchNextPage, hasNextPage, isFetching } = useInfiniteQuery(
     queryKey: 'myQueryKey', 
     queryFn: fetchData,
     getNextPageParam: lastPage => lastPage.next ?? undefined,
-});
-`;
+});`;
 
 const exampleCode4 = `const pokemonInfiniteQuery = useInfiniteQuery({
     queryKey: ['pokemon'],
@@ -66,7 +64,7 @@ const exampleInfiniteQuery = `const { data, isLoading } = useInfiniteQuery(
 
 const exampleData = {
     count: 1292,
-    next: 'https://pokeapi.co/api/v2/pokemon?offset=0&limit=6',
+    next: 'https://pokeapi.co/api/v2/pokemon?offset=0&limit=3',
     previous: null,
     results: [
         {
@@ -80,18 +78,6 @@ const exampleData = {
         {
             name: 'venusaur',
             url: 'https://pokeapi.co/api/v2/pokemon/3/',
-        },
-        {
-            name: 'charmander',
-            url: 'https://pokeapi.co/api/v2/pokemon/4/',
-        },
-        {
-            name: 'charmeleon',
-            url: 'https://pokeapi.co/api/v2/pokemon/5/',
-        },
-        {
-            name: 'charizard',
-            url: 'https://pokeapi.co/api/v2/pokemon/6/',
         },
     ],
 };
@@ -310,9 +296,9 @@ const InfiniteInformation = () => {
         <Accordion type='single' collapsible className='w-full text-left mt-5'>
             {information.map((info, index) => (
                 <AccordionItem key={index} value={`item-${index}`}>
-                    <AccordionTrigger className='md:text-lg font-semibold text-left'>{info.title}</AccordionTrigger>
+                    <AccordionTrigger className='text-lg font-semibold text-left'>{info.title}</AccordionTrigger>
                     {info.content.map((content, index) => (
-                        <AccordionContent key={index} className='md:text-base'>
+                        <AccordionContent key={index} className='text-base leading-8'>
                             {content}
                         </AccordionContent>
                     ))}

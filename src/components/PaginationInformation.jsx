@@ -2,29 +2,31 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import CodeLabel from './CodeLabel';
 import CodeBlock from './CodeBlock';
 
-const codeExample = `const [page, setPage] = React.useState(0);
-const { data } = useQuery(['myQueryKey', { page: 1, pageSize: 10 }], fetchDataFunction);
-return (
-    <div>
-        {data.results.map(pokemon => (
-            <div key={pokemon.name}>
-                <div>
-                    <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-                    <h1>{pokemon.name}</h1>
-                </div>
-            </div>
-        ))}
+const codeExample = `const Component = () => {
+    const [page, setPage] = React.useState(0);
+    const { data } = useQuery(['myQueryKey', { page: 1, pageSize: 10 }], fetchDataFunction);
+    return (
         <div>
-            <button onClick={() => setPage(page => page - 1)} disabled={page === 0}>
-                Previous
-            </button>
-            <p className='ml-10 mr-10'>Page {page}</p>
-            <button onClick={() => setPage(page => page + 1)} disabled={!data || data.length === 0}>
-                Next
-            </button>
+            {data.results.map(pokemon => (
+                <div key={pokemon.name}>
+                    <div>
+                        <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+                        <h1>{pokemon.name}</h1>
+                    </div>
+                </div>
+            ))}
+            <div>
+                <button onClick={() => setPage(page => page - 1)} disabled={page === 0}>
+                    Previous
+                </button>
+                <p className='ml-10 mr-10'>Page {page}</p>
+                <button onClick={() => setPage(page => page + 1)} disabled={!data || data.length === 0}>
+                    Next
+                </button>
+            </div>
         </div>
-    </div>
-);`;
+    );
+}`;
 
 const initialQuery = `const { data, isLoading } = useQuery(
     queryKey: 'myQueryKey', 
@@ -120,7 +122,7 @@ const PaginationInformation = () => {
                 <AccordionItem key={index} value={`item-${index}`}>
                     <AccordionTrigger className='text-lg font-semibold text-left'>{info.title}</AccordionTrigger>
                     {info.content.map((content, index) => (
-                        <AccordionContent key={index} className='text-base'>
+                        <AccordionContent key={index} className='text-base leading-8'>
                             {content}
                         </AccordionContent>
                     ))}

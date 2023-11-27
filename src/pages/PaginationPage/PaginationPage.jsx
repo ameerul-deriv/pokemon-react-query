@@ -45,7 +45,7 @@ const PaginationComponent = () => {
     const { data, error, isLoading, isError, isFetching, isPreviousData } = pokemonQuery;
 
     return (
-        <div>
+        <div className='p-[2rem]'>
             <Navbar />
             <PaginationInformation />
             <div className='mt-10 mb-10'>
@@ -54,7 +54,7 @@ const PaginationComponent = () => {
                     {isLoading &&
                         Array.from({ length: 9 }, (_, index) => (
                             <Card className='grid place-items-center' key={index}>
-                                <Skeleton className='h-[8rem] w-[100%] flex items-center justify-center'>
+                                <Skeleton className='h-[9rem] w-[100%] flex items-center justify-center'>
                                     <img className='h-[6rem] animate-spin' src={pokeballLogo} alt='pokeball' />
                                 </Skeleton>
                             </Card>
@@ -62,7 +62,7 @@ const PaginationComponent = () => {
                     {data &&
                         data.results.map(pokemon => (
                             <Card key={pokemon.name}>
-                                <CardContent className='grid place-items-center place-content-center h-[8rem] p-0'>
+                                <CardContent className='grid place-items-center place-content-center h-[8rem] p-0 mb-4'>
                                     <img src={pokemon.sprites.front_default} alt={pokemon.name} />
                                     <h2>{pokemon.name}</h2>
                                 </CardContent>

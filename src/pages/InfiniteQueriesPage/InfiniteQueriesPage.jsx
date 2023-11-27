@@ -55,7 +55,11 @@ const InfiniteQueriesPage = () => {
     }, 0);
 
     if (isLoading) {
-        return <div>Loading...</div>;
+        return (
+            <div className='h-[100vh] w-[100vw] flex items-center justify-center'>
+                <img className='h-[20rem] animate-spin' src={pokeballLogo} alt='pokeball' />
+            </div>
+        );
     }
 
     if (isError) {
@@ -63,7 +67,7 @@ const InfiniteQueriesPage = () => {
     }
 
     return (
-        <div>
+        <div className='p-[2rem]'>
             <Navbar />
             <InfiniteInformation />
             <div id='scrollbar-target' className='mt-10 mb-10 overflow-auto h-[59vh]'>
@@ -74,7 +78,7 @@ const InfiniteQueriesPage = () => {
                     hasMore={hasNextPage}
                     loader={Array.from({ length: 3 }, (_, index) => (
                         <Card className='grid place-items-center' key={index}>
-                            <Skeleton className='h-[8rem] w-[100%] flex items-center justify-center'>
+                            <Skeleton className='h-[9rem] w-[100%] flex items-center justify-center'>
                                 <img className='h-[6rem] animate-spin' src={pokeballLogo} alt='pokeball' />
                             </Skeleton>
                         </Card>
@@ -92,7 +96,7 @@ const InfiniteQueriesPage = () => {
                             {page.results.map(pokemon => {
                                 return (
                                     <Card key={pokemon.name}>
-                                        <CardContent className='grid place-items-center place-content-center h-[8rem] p-0'>
+                                        <CardContent className='grid place-items-center place-content-center h-[8rem] p-0 mb-4'>
                                             <img src={pokemon.sprites.front_default} alt='' />
                                             <h1>{pokemon.name}</h1>
                                         </CardContent>
